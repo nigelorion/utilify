@@ -1,0 +1,48 @@
+.home {
+
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(./assets/hero.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(50%);
+  z-index: -1;
+}
+
+.hero {
+  width: 50%;
+  height: 250px;
+  background-color: rgba(92, 42, 98, 0.6);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: rgba(255, 255, 255, 0.87);
+  padding: 1%;
+  &__header {
+    margin-bottom: 5%;
+    font-size: 3em;
+  }
+
+}
+
+.login {
+  width: 200px;
+  height: 50px;
+  background-color: rgba(92, 42, 98, 0.6);
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  &:hover {
+    background-color: rgba(71, 71, 71, 0.65);
+  }
+
+
+}

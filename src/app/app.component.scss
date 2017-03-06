@@ -1,19 +1,40 @@
-.nav {
+.hamburger {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+}
 
-  background-color: rgb(139, 154, 191);
+.sidebar {
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  position: fixed;
+  width: 140px;
+  background-color: rgba(227, 194, 209, 0.21);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  left: -100%;
+}
+
+.nav {
   display: flex;
   flex-direction: column;
-  height: 300px;
-  width: 100px;
-  position: fixed;
   justify-content: space-around;
   align-items: center;
-  top: 50%;
-  bottom: 50%;
-  
-  transform: translate(-50%, -50%);
+  margin: auto 0;
+  height: 50%;
+  width: 80%;
   &__item {
     text-decoration: none;
-    color: inherit;
+    color: white;
+    font-size: 1.7em;
+    &:hover {
+      color: gray;
+    }
+
   }
+
 }
