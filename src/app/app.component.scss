@@ -1,22 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+
 .hamburger {
   position: absolute;
   top: 5px;
   left: 5px;
   z-index: 2;
+  color: white;
+  background: none;
+  border: none;
+  font-size: 3em;
+  transition: transform 250ms ease-in-out;
+  &:hover {
+    transform: rotate(180deg);
+    color: rgb(177, 127, 200);
+  }
+}
+
+.logo {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 4em;
+  color: rgba(123, 61, 133, 0.79);
+  text-decoration: none;
+  transition: color, transform 200ms;
+  font-family: 'Josefin Sans', sans-serif;
+  z-index: 3;
+  &:hover {
+    color: rgba(185, 185, 185, 0.54);
+    transform: scale(.8);
+  }
 }
 
 .sidebar {
+  font-family: 'Josefin Sans', sans-serif;
+
   left: 0px;
   top: 0px;
   bottom: 0px;
   position: fixed;
-  width: 140px;
+  width: 160px;
   background-color: rgba(227, 194, 209, 0.21);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
-  left: -100%;
+
+  transition: left 100ms ease-in-out;
 }
 
 .nav {
