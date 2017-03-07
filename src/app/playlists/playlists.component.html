@@ -1,7 +1,16 @@
 <div class="newPlaylist">
   <h1>Current Playlist:</h1>
+  <ol class="orderPlaylists">
+    <li *ngFor="let playlist of playlists">{{playlist.name}} {{playlist.id}}</li>
+    <!-- <iframe *ngFor="let playlist of playlists" src="https://embed.spotify.com/?uri=spotify%3Auser%3Aspotify%3Aplaylist%" + {{playlist.id}} + "&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe></li> -->
+    <!-- <iframe *ngFor="let playlist of playlists" src="https://embed.spotify.com/?uri=spotify:user:motiusclydespotify:playlist: + {{playlist.id}} width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
+
+  </ol>
+
+
 </div>
 
 <div class="searchPlaylist">
+
 
 </div>

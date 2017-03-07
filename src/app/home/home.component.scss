@@ -8,11 +8,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(./assets/hero.jpg);
+  background-image: url(./assets/hero2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: grayscale(50%);
+  // filter: grayscale(90%);
   z-index: -1;
   font-family: 'Josefin Sans', sans-serif;
 
@@ -21,7 +21,7 @@
 .hero {
   width: 50%;
   height: 250px;
-  background-color: rgba(92, 42, 98, 0.6);
+  background-color: rgba(112, 74, 116, 0.6);
   display: flex;
   text-align: center;
   justify-content: center;

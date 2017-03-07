@@ -1,6 +1,9 @@
-<button class="hamburger" (click)="sideButton()" *ngIf="toggleSideMenu">&#x2630;</button>
-<button class="hamburger" (click)="sideButton()" *ngIf="closeSideMenu">X</button>
-<a class="logo" routerLink=''>Utilify</a>
+
+  <button class="hamburger" (click)="sideButton()" *ngIf="toggleSideMenu">&#x2630;</button>
+  <button class="hamburger" (click)="sideButton()" *ngIf="closeSideMenu">X</button>
+  <a class="logo" routerLink=''>Utilify</a>
+
+
   <div class="sidebar" *ngIf="menu" [@menuSlide]="menu">
     <nav class="nav">
       <a class="nav__item" routerLink='' (click)="sideButton()">home</a>

@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+// import {
+//   HandyOauthStorageKeys,
+//   HandyOauthUserDataInterface,
+//   HandyOauthStorageService,
+//   HandyOauthConfigProvidersService,
+//   HandyOauthProvidersController
+// } from 'ng2-handy-oauth';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +19,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  sideBar() {
-    alert("test");
+  login() {
+    // this.oauth.login(spotify);
   }
 
 }
