@@ -15,6 +15,9 @@ export class PlaylistsComponent implements OnInit {
   playlistTracks: any;
   testGenre = "hip-hop";
   testTempo = 99
+  genre: string;
+  tempo: number;
+  recTracks: any;
 
   constructor(private service: AppService, private router: Router) {
    }
@@ -22,6 +25,7 @@ export class PlaylistsComponent implements OnInit {
   ngOnInit() {
 
     this.getPlaylists();
+    this.getRecTracks();
 
   }
 
@@ -41,6 +45,16 @@ export class PlaylistsComponent implements OnInit {
     this.router.navigate(['playlists', playlist.$key])
     console.log(playlist);
   }
+
+  getRecTracks() {
+    this.genre = "hip-hop";
+    this.tempo = 90;
+    this.service.getRecTracks(this.genre, this.tempo).subscribe(response =>{
+      this.recTracks = response.tracks;
+      console.log(this.recTracks);
+    });
+  }
+
 
 
 }

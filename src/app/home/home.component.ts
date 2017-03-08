@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from  '../app.service';
 import {Http} from '@angular/http';
+
 import {Router, ActivatedRoute, Params} from '@angular/router';
+
 // import {
 //   HandyOauthStorageKeys,
 //   HandyOauthUserDataInterface,
@@ -17,36 +19,41 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   providers: [AppService]
 })
 export class HomeComponent implements OnInit {
-  token: string;
 
-
-  constructor(private service: AppService, public http: Http, public route: ActivatedRoute, public router: Router) {
-
-
-   }
+    token: string;
+    sendToken: string;
 
 
 
+    constructor(private service: AppService, public http: Http, private route: ActivatedRoute, private router: Router) {
+      // route.queryParams.subscribe(
+      //   data => console.log('queryParams', data['access_token']));
+      //   console.log(this.params);
+    }
 
-  login() {
-    this.service.login();
-  }
+
+
+
+    login() {
+
+      this.sendToken = this.token
+
+
+
+      this.service.login(this.sendToken);
+
+      // this.route.queryParams.subscribe(
+      //   data => console.log('queryParams', data['access_token']));
+
+    }
 
   ngOnInit() {
-    this.route.queryParams.forEach((params: Params) => {
-    this.token = params['access_token'];
 
-  });
 
-      console.log(this.token);
 
 
 
   }
+}
 
   // https://accounts.spotify.com/authorize?client_id=bacfafc3c299455ea7a545d07b0762f6&redirect_uri=http://localhost:4200/callback&scope=user-read-private%20user-read-email&response_type=token&state=123
-
-
-
-
-}

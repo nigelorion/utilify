@@ -12,11 +12,35 @@
   </ol>
 
 
+
+
 </div>
 
 <div class="searchPlaylist">
 
-  <p (click)="playlistDetails(playlist)">fuuuuck</p>
+  <div class="recTracks">
+    <div *ngFor="let recTrack of recTracks" class="trackWrapper" >
+      <p>{{recTrack.name}}</p>
+      <p>{{recTrack.artists[0].name}}</p>
+      <p>convert({{recTracks.duration_ms}})</p>
+      <p "convert({{recTracks.duration_ms}})">
+      <script>
+        function convert(ms) {
+          var minutes = Math.floor(ms / 60000);
+          var seconds = ((ms % 60000) / 1000).toFixed(0);
+          return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+      </script>
+
+
+
+      <!-- <iframe src="https://embed.spotify.com/?uri="+{{recTrack.uri}}></iframe> -->
+
+    </div>
+
+
+  </div>
 
 
 </div>
