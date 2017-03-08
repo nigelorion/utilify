@@ -3,11 +3,18 @@ import {Routes, RouterModule} from '@angular/router';
 import {SearchComponent} from './search/search.component';
 import {PlaylistsComponent} from './playlists/playlists.component';
 import {HomeComponent} from './home/home.component';
+import {PlaylistDetailsComponent} from './playlist-details/playlist-details.component';
+
+
 
 
 const appRoutes: Routes = [
   {
     path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'home',
     component: HomeComponent
   },
   {
@@ -17,7 +24,12 @@ const appRoutes: Routes = [
   {
     path: 'playlists',
     component: PlaylistsComponent
+  },
+  {
+    path: 'playlists/:id',
+    component: PlaylistDetailsComponent
   }
+
 ];
 
 

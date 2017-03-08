@@ -1,25 +1,43 @@
 
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/Rx';
 
 @Injectable()
 
-export class AppService {
+export class AppService implements OnInit{
       http: any;
       baseUrl: string;
       token: string;
+      id: string;
+      redirect: string;
 
-      constructor(http: Http) {
+
+      constructor(http: Http, private route: ActivatedRoute) {
         this.http = http;
         this.baseUrl = 'https://api.spotify.com/v1/';
-        this.token = "BQB0mJ-UOPkl3Gsm4BsMqxShh3nZj9NvLgnjMK4sft4a9WyvOZ1Ebw-8ogTkkA3vQCAatvgKvPF_M_vNtDYgT25NdS65PmaZ_0EwveQ4Ddq1y9gp6NV6ryRE_-EpuLLMoe1FLFnHRM11dYsNWp0Q0pYvLtgLDWm3L3jzl3GPmKWEP9-HatLkm9APBnW_ilzrq91RniBnewWsnGbFX-I1Jeo950LW_EBAh3mDqTxpnkzLWjj5McMv2ZkX_MxLpJz1";
 
+      }
+
+      ngOnInit() {
+        this.route.params.subscribe((url) => {
+        this.token = url['access_token'];
+        console.log(this.token);
+        })
       }
 
       getPlaylists() {
         return this.http.get(this.baseUrl + 'me/playlists?&access_token=' + this.token).map(res => res.json());
       }
+
+      login() {
+        window.location.href = 'https://accounts.spotify.com/authorize?client_id=bacfafc3c299455ea7a545d07b0762f6&redirect_uri=http://localhost:4200&scope=user-read-private%20user-read-email&response_type=token&state=123';
+
+
+
+      }
+
 
 
 }

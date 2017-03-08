@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+import {Router} from '@angular/router';
 
 
 
@@ -15,7 +16,7 @@ export class PlaylistsComponent implements OnInit {
   testGenre = "hip-hop";
   testTempo = 99
 
-  constructor(private service: AppService) {
+  constructor(private service: AppService, private router: Router) {
    }
 
   ngOnInit() {
@@ -24,13 +25,22 @@ export class PlaylistsComponent implements OnInit {
 
   }
 
+  test(playlist) {
+
+  }
+
   getPlaylists() {
     this.service.getPlaylists().subscribe(response =>{
       this.playlists = response.items;
       console.log(this.playlists);
-      this.playlistTracks = response.items.tracks;
-      console.log(this.playlistTracks.items);
+
     });
   }
+
+  playlistDetails(playlist) {
+    this.router.navigate(['playlists', playlist.$key])
+    console.log(playlist);
+  }
+
 
 }

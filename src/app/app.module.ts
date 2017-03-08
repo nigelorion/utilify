@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
 import { HomeComponent } from './home/home.component';
+import { PlaylistDetailsComponent } from './playlist-details/playlist-details.component';
 // import { Ng2HandyOauthModule } from 'ng2-handy-oauth';
 
 
@@ -15,7 +16,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     SearchComponent,
     PlaylistsComponent,
-    HomeComponent
+    HomeComponent,
+    PlaylistDetailsComponent
   ],
   imports: [
     BrowserModule,
