@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'home',
+    path: 'home/:access_token',
     component: HomeComponent
   },
   {

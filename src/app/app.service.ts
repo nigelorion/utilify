@@ -32,7 +32,7 @@ export class AppService implements OnInit{
       }
 
       login() {
-        window.location.href = 'https://accounts.spotify.com/authorize?client_id=bacfafc3c299455ea7a545d07b0762f6&redirect_uri=http://localhost:4200&scope=user-read-private%20user-read-email&response_type=token&state=123';
+        window.location.href = 'https://accounts.spotify.com/authorize?client_id=bacfafc3c299455ea7a545d07b0762f6&redirect_uri=http://localhost:4200&scope=user-read-private%20user-read-email&response_type=token&state=123&show_dialog=true';
 
 
 
