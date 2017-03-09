@@ -54,6 +54,19 @@ export class AppService implements OnInit{
 
       }
 
+      getPlaylistTracks(playlistId) {
+        this.user = "motiusclyde"
+
+        return this.http.get(this.baseUrl + 'users/' + this.user + '/playlists/' + playlistId + '/tracks?offset=0&limit=100&access_token=' + this.token).map(res => res.json());
+
+
+      }
+
+
+
+
+
+
       // POST /v1/users/motiusclyde/playlists/7amvImAMTWbiJFOYeYdBCC/tracks?uris=spotify%3Atrack%3A4IJ7ZoJ8z8cAIbqYShF3ZZ HTTP/1.1
 
 

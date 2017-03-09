@@ -23,7 +23,9 @@ export class PlaylistsComponent implements OnInit {
   showRecTracks = false;
   searchButton = true;
   selectedPlaylistId: string;
+  selectedPlaylist: string;
   currentPlaylistUri: string;
+  loading = false;
 
   constructor(private service: AppService, private router: Router) {
    }
@@ -59,27 +61,46 @@ export class PlaylistsComponent implements OnInit {
     });
   }
 
+  backButton() {
+    this.playlistView = true;
+    this.playlistDetailView = false;
+
+  }
+
   playlistDetails(playlist) {
 
 
     this.playlistView = false;
     this.playlistDetailView = true;
-    console.log(playlist.uri);
+    console.log(playlist);
     this.currentPlaylistUri = playlist.uri;
     this.selectedPlaylistId = playlist.id;
+    this.selectedPlaylist = playlist;
     console.log(this.selectedPlaylistId);
+    this.service.getPlaylistTracks(this.selectedPlaylistId).subscribe(response => {
+      this.playlistTracks = response.items;
+      console.log(response);
+    })
   }
 
   getRecTracks() {
 
   }
 
+
+
+
   addTrack(trackId) {
+    this.playlistDetails(this.selectedPlaylist);
 
     this.service.addTrack(trackId, this.selectedPlaylistId).subscribe(response =>{
       console.log(response);
     });
     console.log("testing add track button");
+  }
+
+  getPlaylistTracks() {
+
   }
 
 
