@@ -195,8 +195,24 @@
   justify-content: space-around;
   color: rgb(173, 151, 208);
   margin-bottom: 3%;
-  p {
+  flex: 0;
+  position: relative;
 
+  p {
+    flex-grow: 0;
+    position: absolute;
+    left: 0px;
+    top: -20px;
+
+  }
+  input {
+    font-size: .5em;
+    border: none;
+  }
+  button {
+    border: none;
+    background-color: rgb(108, 130, 163);
+    color: white;
   }
 }
 

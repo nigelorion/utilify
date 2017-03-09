@@ -34,7 +34,7 @@ export class AppService {
       }
 
       getUser() {
-        return this.http.get(this.baseUrl + 'me?&access_token=' + this.token).map(res => res.json());        
+        return this.http.get(this.baseUrl + 'me?&access_token=' + this.token).map(res => res.json());
       }
 
       getPlaylists() {
@@ -45,15 +45,15 @@ export class AppService {
         return this.http.get(this.baseUrl + 'recommendations?&seed_genres=' + genre + '&limit=25&target_tempo=' + tempo + '&access_token=' + this.token).map(res => res.json());
       }
 
-      addTrack(trackId, playlistId) {
+      addTrack(trackId, playlistId, userId) {
           console.log(trackId, playlistId);
-        this.user = "motiusclyde"
-        return this.http.post(this.baseUrl + 'users/' + this.user + '/playlists/' + playlistId + '/tracks?uris=' + trackId + '&access_token=' + this.token).map(res => res.json());
+        // this.user = "motiusclyde"
+        return this.http.post(this.baseUrl + 'users/' + userId + '/playlists/' + playlistId + '/tracks?uris=' + trackId + '&access_token=' + this.token).map(res => res.json());
       }
 
-      getPlaylistTracks(playlistId) {
-        this.user = "motiusclyde"
-        return this.http.get(this.baseUrl + 'users/' + this.user + '/playlists/' + playlistId + '/tracks?offset=0&limit=100&access_token=' + this.token).map(res => res.json());
+      getPlaylistTracks(playlistId, userId) {
+        // this.user = "motiusclyde"
+        return this.http.get(this.baseUrl + 'users/' + userId + '/playlists/' + playlistId + '/tracks?offset=0&limit=100&access_token=' + this.token).map(res => res.json());
       }
 
       login(token) {

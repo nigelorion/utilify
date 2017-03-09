@@ -101,7 +101,7 @@ export class PlaylistsComponent implements OnInit {
     this.selectedPlaylistId = playlist.id;
     this.selectedPlaylist = playlist;
     console.log(this.selectedPlaylistId);
-    this.service.getPlaylistTracks(this.selectedPlaylistId).subscribe(response => {
+    this.service.getPlaylistTracks(this.selectedPlaylistId, this.currentUserId).subscribe(response => {
       this.playlistTracks = response.items;
       console.log(response);
     })
@@ -109,7 +109,7 @@ export class PlaylistsComponent implements OnInit {
 
   addTrack(trackId) {
     this.playlistDetails(this.selectedPlaylist);
-    this.service.addTrack(trackId, this.selectedPlaylistId).subscribe(response =>{
+    this.service.addTrack(trackId, this.selectedPlaylistId, this.currentUserId).subscribe(response =>{
       console.log(response);
     });
     console.log("testing add track button");
