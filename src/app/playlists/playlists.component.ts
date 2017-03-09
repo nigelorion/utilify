@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 import { AppService } from '../app.service';
 import {Router} from '@angular/router';
 
@@ -6,7 +6,26 @@ import {Router} from '@angular/router';
   selector: 'app-playlists',
   templateUrl: './playlists.component.html',
   styleUrls: ['./playlists.component.scss'],
-  providers: [AppService]
+  providers: [AppService],
+  animations: [
+  trigger(
+    'menuSlide',
+    [
+      transition(
+      ':enter', [
+        style({top: '-140px', opacity: 1}),
+        animate('500ms', style({top: '0px', opactiy: 0}))
+      ]
+    ),
+    transition(
+      ':leave', [
+        style({transform: 'translateY(0)', 'opacity': 1}),
+        animate('150ms', style({transform: 'translateY(100%)', opacity: 0}),
+
+      )]
+    )]
+  )
+]
 })
 export class PlaylistsComponent implements OnInit {
   playlists: any;

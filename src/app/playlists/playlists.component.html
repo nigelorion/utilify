@@ -1,10 +1,10 @@
 
 
 <div class="wrapper">
-  <div class="header"  *ngIf="header">
+  <div class="header"  *ngIf="header" [@menuSlide]="header">
     <button type="button" name="button" (click)="closeHeader()">x</button>
 
-    <h1 class="headerTitle">Welcome <span>{{currentUserId}}</span>!</h1>
+    <h1 class="headerTitle">Welcome <span>{{currentUserId}} </span>!</h1>
 
     <p class="headerSub">View your current playlists on the left and search for new tracks based off of genre and tempo. Add them to playlists live!</p>
 
@@ -16,8 +16,8 @@
 <div class="newPlaylist">
   <h1>Current Playlist:</h1>
   <ol class="orderPlaylists" *ngIf="playlistView">
-    <li *ngFor="let playlist of playlists"> {{playlist.name}}
-      <button type="button" (click)="playlistDetails(playlist)"></button>
+    <li *ngFor="let playlist of playlists" class="playlistBlock" class="playlists"> {{playlist.name}}
+      <button class="detailsButton" type="button" (click)="playlistDetails(playlist)" >details</button>
     </li>
   </ol>
   <div *ngIf="playlistDetailView">

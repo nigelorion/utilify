@@ -14,9 +14,9 @@
     border: none;
     color: white;
     font-size: 2em;
-    transition: all 100ms;
+    transition: all 200ms;
     &:hover {
-      transform: scale(1.5);
+      transform: scale(2.0);
     }
 
   }
@@ -43,7 +43,7 @@
 
 .headerTitle {
   font-size: 3em;
-  color: rgb(209, 168, 214);
+  color: rgb(201, 201, 201);
   span {
     font-style: italic;
     font-size: 1.1em;
@@ -58,7 +58,7 @@
 
 .searchWrapper {
   display: flex;
-  margin-top: 5%;
+
 
 }
 
@@ -71,29 +71,73 @@
 
 .searchPlaylist {
   margin: 3%;
-  width: 400px;
-  // background-color: rgba(71, 71, 71, 0.47);
+  width: 500px;
+  background-color: rgba(71, 71, 71, 0.47);
   padding: 3%;
-  border: solid 1px red;
+
+  // flex-grow: 0;
+  // position: relative;
+  p {
+    // position: absolute;
+    // left: 10px;
+    // top: 0px;
+
+  }
+
+}
+
+.searchControls {
+  font-size: 2em;
 }
 
 .newPlaylist {
-  border: solid 1px red;
 
+  position: relative;
 
-  width: 400px;
-  // background-color: rgba(71, 71, 71, 0.47);
+  width: 500px;
+  flex-grow: 0;
+  background-color: rgba(71, 71, 71, 0.47);
 
   color: white;
   padding: 3%;
   // width: 33%;
   // height: 70%;
-  // background-color: rgba(173, 173, 173, 0.67);
+
   margin: 3%;
+  list-style-type: none;
 
   h1 {
-    font-size: 2em;
+    font-size: 2.6em;
     margin-bottom: 3%;
+  }
+  .playlists {
+    margin: 3%;
+    font-size: 1.4em;
+    color: rgb(209, 209, 209);
+    padding: 1%;
+    &:hover {
+      background-color: rgb(56, 56, 56);
+    }
+    &:hover > button {
+      opacity: 1;
+    }
+  }
+  .detailsButton {
+    position: absolute;
+    right: 10%;
+    border: none;
+    background-color: rgb(108, 130, 163);
+    color: white;
+    opacity: 0;
+    transition: all 200ms;
+  }
+  button {
+    position: absolute;
+    right: 10%;
+    border: none;
+    background-color: rgb(108, 130, 163);
+    color: white;
+
   }
 
 }
@@ -122,7 +166,7 @@
   display: flex;
   margin-bottom: 2%;
   align-items: center;
-  width: 400px;
+
   height: 35px;
   background-color: rgb(57, 55, 59);
   color: rgb(219, 219, 219);
@@ -134,7 +178,7 @@
   }
   &:hover {
     transform: scale(1.1);
-    background-color: rgb(145, 132, 147);
+    background-color: rgb(97, 91, 136);
 
   }
   &:hover > .addButton {
