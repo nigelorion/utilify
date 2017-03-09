@@ -1,9 +1,11 @@
 import { Component, trigger, transition, style, animate  } from '@angular/core';
+import { AppService } from  './app.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [AppService],
   animations: [
   trigger(
     'menuSlide',
@@ -27,6 +29,7 @@ import { Component, trigger, transition, style, animate  } from '@angular/core';
 })
 export class AppComponent {
 
+
   menu = false;
 
   toggleSideMenu = true;
@@ -35,10 +38,25 @@ export class AppComponent {
 
   title = 'Utilify';
 
+  token: string;
+
+  sendToken: string;
+
+  constructor(private service: AppService) {
+
+  }
+
+
   sideButton() {
     this.menu = !this.menu;
     this.toggleSideMenu = !this.toggleSideMenu;
     this.closeSideMenu = !this.closeSideMenu;
+
+  }
+
+  loginRoute() {
+    this.sendToken = this.token;
+    this.service.login(this.sendToken);
   }
 
 

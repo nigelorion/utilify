@@ -1,84 +1,53 @@
+
+
 <div class="wrapper">
+  <div class="header"  *ngIf="header">
+    <button type="button" name="button" (click)="closeHeader()">x</button>
+
+    <h1 class="headerTitle">Welcome <span>{{currentUserId}}</span>!</h1>
+
+    <p class="headerSub">View your current playlists on the left and search for new tracks based off of genre and tempo. Add them to playlists live!</p>
+
+  </div>
 
 
+<div class="searchWrapper">
 
 <div class="newPlaylist">
   <h1>Current Playlist:</h1>
   <ol class="orderPlaylists" *ngIf="playlistView">
-
     <li *ngFor="let playlist of playlists"> {{playlist.name}}
       <button type="button" (click)="playlistDetails(playlist)"></button>
-
     </li>
-
-
   </ol>
-
   <div *ngIf="playlistDetailView">
     <button type="button" name="button" (click)="backButton()">back</button>
-
     <ol class="orderPlaylists">
       <li *ngFor="let track of playlistTracks"> {{track.track.name}}
-
-
       </li>
-
-
     </ol>
-
-
-    <!-- <iframe src="https://embed.spotify.com/?uri=${currentPlaylistUri}" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
-
-
   </div>
-
-
-
-
 </div>
 
 <div class="searchPlaylist">
-  <p>{{tempoRange}}</p>
-  <input type="range" id="tempo" min="20" max="200" value="50" [(ngModel)]="tempoRange" #tempoValue>
-  <input type="text" #genreValue placeholder="genre">
+  <div class="searchControls">
+    <p>{{tempoRange}}</p>
+    <input type="range" id="tempo" min="20" max="200" value="50" [(ngModel)]="tempoRange" #tempoValue>
+    <input type="text" #genreValue placeholder="genre">
+    <button type="submit" (click)="searchTracks(tempoValue.value, genreValue.value)">Search</button>
 
-  <button type="submit" (click)="searchTracks(tempoValue.value, genreValue.value)">Search</button>
-
+  </div>
 
   <div *ngIf="showRecTracks" class="recTracks">
     <img *ngIf="loading" src="http://www.cuisson.co.uk/templates/cuisson/supersize/slideshow/img/progress.BAK-FOURTH.gif" alt="loading">
     <div *ngFor="let recTrack of recTracks" class="trackWrapper" >
-      <button type="button" name="button" (click)="addTrack(recTrack.uri)">add</button>
 
-      <p>{{recTrack.name}}</p>
+      <p>{{recTrack.name}} - </p>
       <p>{{recTrack.artists[0].name}}</p>
-      <p>{{recTrack.duration_ms}}</p>
-      <audio src="{{recTrack.preview_url}}">play
-
-      </audio>
-
-      <p class="deleteButton">x</p>
-
-      <!-- <p "convert({{recTracks.duration_ms}})">
-      <script>
-        function convert(ms) {
-          var minutes = Math.floor(ms / 60000);
-          var seconds = ((ms % 60000) / 1000).toFixed(0);
-          return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-        }
-
-      </script> -->
-
-
-
-      <!-- <iframe src="https://embed.spotify.com/?uri="+{{recTrack.uri}}></iframe> -->
-
+      <p class="addButton" (click)="addTrack(recTrack.uri)"><span>Add to playlist?</span>+</p>
     </div>
-
-
   </div>
-
-
+</div>
 </div>
 
 </div>

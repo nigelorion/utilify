@@ -3,15 +3,12 @@
   <button class="hamburger" (click)="sideButton()" *ngIf="closeSideMenu">X</button>
   <a class="logo" routerLink=''>Utilify</a>
 
-
   <div class="sidebar" *ngIf="menu" [@menuSlide]="menu">
     <nav class="nav">
       <a class="nav__item" routerLink='' (click)="sideButton()">home</a>
-      <a class="nav__item" routerLink='search' (click)="sideButton()">search</a>
+      <a class="nav__item" routerLink='search' (click)="sideButton()" (click)="loginRoute()">search</a>
       <a class="nav__item" routerLink='playlists' (click)="sideButton()">playlists</a>
     </nav>
-
   </div>
-
 
   <router-outlet></router-outlet>

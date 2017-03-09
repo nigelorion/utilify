@@ -6,7 +6,8 @@ import 'rxjs/Rx';
 
 @Injectable()
 
-export class AppService implements OnInit{
+export class AppService {
+
       http: any;
       baseUrl: string;
       token: string;
@@ -14,8 +15,6 @@ export class AppService implements OnInit{
       redirect: string;
       url: string;
       user: string;
-
-
 
       constructor(http: Http, private route: ActivatedRoute) {
 
@@ -34,9 +33,8 @@ export class AppService implements OnInit{
 
       }
 
-      ngOnInit() {
-
-
+      getUser() {
+        return this.http.get(this.baseUrl + 'me?&access_token=' + this.token).map(res => res.json());        
       }
 
       getPlaylists() {
@@ -51,28 +49,12 @@ export class AppService implements OnInit{
           console.log(trackId, playlistId);
         this.user = "motiusclyde"
         return this.http.post(this.baseUrl + 'users/' + this.user + '/playlists/' + playlistId + '/tracks?uris=' + trackId + '&access_token=' + this.token).map(res => res.json());
-
       }
 
       getPlaylistTracks(playlistId) {
         this.user = "motiusclyde"
-
         return this.http.get(this.baseUrl + 'users/' + this.user + '/playlists/' + playlistId + '/tracks?offset=0&limit=100&access_token=' + this.token).map(res => res.json());
-
-
       }
-
-
-
-
-
-
-      // POST /v1/users/motiusclyde/playlists/7amvImAMTWbiJFOYeYdBCC/tracks?uris=spotify%3Atrack%3A4IJ7ZoJ8z8cAIbqYShF3ZZ HTTP/1.1
-
-
-
-// COPY
-// curl -X POST "https://api.spotify.com/v1/users/motiusclyde/playlists/7tpDLOs3LA8UHmx9cOMBvp/tracks?uris=spotify%3Atrack%3A6fujklziTHa8uoM5OQSfIo" -H "Accept: application/json" -H "Authorization: Bearer BQCNRd7n8_WZEZMebuSLmde1sEv0QuLCKRWvk5EdqL9KyDs21zs0VBJ7xW42HdHmiUgdL9DuphCgtUILA-yV_UprwKWtVs5f38mEQJ1SmaFyhJQtBdK-apSew8wMSbdKAvCRx55YXzIkwgjuRKBAzoRZfuEkJTL9V5s9af1ahOV4KZdNst1yMfqLiKVKj9of55hw782AYo9LPmHJdLFXMS0az6D0jep-17RE5FuFOdPODNoOTOAkSHhFpKJ_4cWV"
 
       login(token) {
         window.location.href = 'https://accounts.spotify.com/authorize?client_id=bacfafc3c299455ea7a545d07b0762f6&redirect_uri=http://localhost:4200/playlists&scope=user-read-private%20user-read-email%20playlist-modify-public%20playlist-modify-private&response_type=token&state=123&show_dialog=true';
@@ -80,9 +62,5 @@ export class AppService implements OnInit{
         console.log(this.token + "pass token to service");
 
       }
-
-
-
-
 
 }

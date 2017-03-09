@@ -1,14 +1,64 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
+
+.header {
+  width: 550px;
+  position: relative;
+  background-color: rgba(71, 71, 71, 0.47);
+  padding: 3%;
+  button {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2em;
+    transition: all 100ms;
+    &:hover {
+      transform: scale(1.5);
+    }
+
+  }
+
+}
 .wrapper {
-  display: flex;
-  margin-left: 100px;
+
+
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // width: 80%;
+  // margin: 0 auto;
+
 
 
   // height: 100vh;
   font-family: 'Josefin Sans', sans-serif;
 
+
+}
+
+.headerTitle {
+  font-size: 3em;
+  color: rgb(209, 168, 214);
+  span {
+    font-style: italic;
+    font-size: 1.1em;
+    color: rgb(130, 167, 181);
+  }
+}
+
+.headerSub {
+  color: rgb(255, 255, 255);
+  font-size: 1.5em;
+}
+
+.searchWrapper {
+  display: flex;
+  margin-top: 5%;
 
 }
 
@@ -21,20 +71,34 @@
 
 .searchPlaylist {
   margin: 3%;
+  width: 400px;
+  // background-color: rgba(71, 71, 71, 0.47);
+  padding: 3%;
+  border: solid 1px red;
 }
 
 .newPlaylist {
+  border: solid 1px red;
+
+
+  width: 400px;
+  // background-color: rgba(71, 71, 71, 0.47);
 
   color: white;
-  width: 33%;
-  height: 70%;
-  background-color: rgba(173, 173, 173, 0.67);
+  padding: 3%;
+  // width: 33%;
+  // height: 70%;
+  // background-color: rgba(173, 173, 173, 0.67);
   margin: 3%;
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 3%;
+  }
 
 }
 
 .orderPlaylists {
-  background-color: rgb(217, 124, 41);
   li {
     margin: 3%;
   }
@@ -73,11 +137,52 @@
     background-color: rgb(145, 132, 147);
 
   }
-  &:hover > .deleteButton {
+  &:hover > .addButton {
     opacity: 1;
   }
 }
 
 .playlistDetailView {
+
+}
+
+.searchControls {
+  display: flex;
+  justify-content: space-around;
+  color: rgb(173, 151, 208);
+  margin-bottom: 3%;
+  p {
+
+  }
+}
+
+.addButton {
+  opacity: 0;
+  transition: all 100ms;
+  position: absolute;
+  right: 0px;
+  font-size: 2.5em;
+  color: rgb(126, 196, 160);
+
+  background-color: none;
+  cursor: pointer;
+
+
+  &:hover {
+    transform: scale(1.6);
+    color: rgb(223, 223, 223);
+
+
+
+
+  }
+  span {
+    opacity: 0;
+    font-size: 0.2em;
+  }
+  &:hover > span {
+    opacity: 1;
+
+  }
 
 }

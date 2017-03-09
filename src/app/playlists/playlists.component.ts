@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import {Router} from '@angular/router';
 
-
-
 @Component({
   selector: 'app-playlists',
   templateUrl: './playlists.component.html',
@@ -26,19 +24,20 @@ export class PlaylistsComponent implements OnInit {
   selectedPlaylist: string;
   currentPlaylistUri: string;
   loading = false;
+  currentUser: any;
+  currentUserId: string;
+  header = true;
 
   constructor(private service: AppService, private router: Router) {
    }
 
   ngOnInit() {
-
     this.getPlaylists();
-
-
+    this.getUser();
   }
 
-  test(playlist) {
-
+  closeHeader() {
+    this.header = false;
   }
 
   getPlaylists() {
@@ -49,12 +48,21 @@ export class PlaylistsComponent implements OnInit {
     });
   }
 
+
+  getUser() {
+    this.service.getUser().subscribe(response =>{
+      this.currentUser = response;
+      this.currentUserId = response.id;
+      console.log(this.currentUser);
+
+    });
+  }
+
   searchTracks(tempo, genre) {
     this.showRecTracks = true;
     this.searchButton = false;
     this.genre = genre;
     this.tempo = tempo;
-
     this.service.getRecTracks(this.genre, this.tempo).subscribe(response =>{
       this.recTracks = response.tracks;
       console.log(this.recTracks);
@@ -64,12 +72,9 @@ export class PlaylistsComponent implements OnInit {
   backButton() {
     this.playlistView = true;
     this.playlistDetailView = false;
-
   }
 
   playlistDetails(playlist) {
-
-
     this.playlistView = false;
     this.playlistDetailView = true;
     console.log(playlist);
@@ -83,26 +88,12 @@ export class PlaylistsComponent implements OnInit {
     })
   }
 
-  getRecTracks() {
-
-  }
-
-
-
-
   addTrack(trackId) {
     this.playlistDetails(this.selectedPlaylist);
-
     this.service.addTrack(trackId, this.selectedPlaylistId).subscribe(response =>{
       console.log(response);
     });
     console.log("testing add track button");
   }
-
-  getPlaylistTracks() {
-
-  }
-
-
 
 }
