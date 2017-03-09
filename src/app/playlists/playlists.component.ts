@@ -18,6 +18,12 @@ export class PlaylistsComponent implements OnInit {
   genre: string;
   tempo: number;
   recTracks: any;
+  playlistView = true;
+  playlistDetailView = false;
+  showRecTracks = false;
+  searchButton = true;
+  selectedPlaylistId: string;
+  currentPlaylistUri: string;
 
   constructor(private service: AppService, private router: Router) {
    }
@@ -25,7 +31,7 @@ export class PlaylistsComponent implements OnInit {
   ngOnInit() {
 
     this.getPlaylists();
-    this.getRecTracks();
+
 
   }
 
@@ -41,18 +47,39 @@ export class PlaylistsComponent implements OnInit {
     });
   }
 
-  playlistDetails(playlist) {
-    this.router.navigate(['playlists', playlist.$key])
-    console.log(playlist);
-  }
+  searchTracks(tempo, genre) {
+    this.showRecTracks = true;
+    this.searchButton = false;
+    this.genre = genre;
+    this.tempo = tempo;
 
-  getRecTracks() {
-    this.genre = "hip-hop";
-    this.tempo = 90;
     this.service.getRecTracks(this.genre, this.tempo).subscribe(response =>{
       this.recTracks = response.tracks;
       console.log(this.recTracks);
     });
+  }
+
+  playlistDetails(playlist) {
+
+
+    this.playlistView = false;
+    this.playlistDetailView = true;
+    console.log(playlist.uri);
+    this.currentPlaylistUri = playlist.uri;
+    this.selectedPlaylistId = playlist.id;
+    console.log(this.selectedPlaylistId);
+  }
+
+  getRecTracks() {
+
+  }
+
+  addTrack(trackId) {
+
+    this.service.addTrack(trackId, this.selectedPlaylistId).subscribe(response =>{
+      console.log(response);
+    });
+    console.log("testing add track button");
   }
 
 
